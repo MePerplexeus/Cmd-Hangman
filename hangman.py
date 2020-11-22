@@ -1,14 +1,4 @@
-# Coding Challenge 3, hangman.py
-# Name: Prithvi Soma
-# Student No: 1412
-
 # Hangman Game
-
-# -----------------------------------
-# Helper code
-# You don't need to understand this helper code,
-# but you will have to know how to use the functions
-# (so be sure to read the docstrings!)
 import random
 import string
 import sys
@@ -16,8 +6,6 @@ from tabulate import tabulate
 
 WORDLIST_FILENAME = "words.txt"
 
-# Responses to in-game events
-# Use the format function to fill in the spaces
 responses = [
     "I am thinking of a word that is {0} letters long", #0
     "Congratulations, you won!", #1 
@@ -31,18 +19,12 @@ responses = [
 ]
 
 letters_guessed = []
-# letters_guessed = ['p','e','r','l','x','u','s']
 
 cPlayer = 999999
 cScore = 0
 
 def choose_random_word(all_words):
     return random.choice(all_words)
-
-
-# end of helper code
-# -----------------------------------
-
 
 def load_words():
     '''Loads the list of words into the variable wordlist from the "words.txt" file
@@ -60,9 +42,6 @@ def load_words():
 
 # Load the list of words into the variable wordlist
 # Accessible from anywhere in the program
-# TODO: uncomment the below line once
-# you have implemented the load_words() function
-
 wordlist = load_words()
 
 
@@ -173,9 +152,6 @@ def doPLQ():
         print(f"   Your High score so far is: {leaderboard[cPlayer][1]}\n   And your current score is: {cScore}")
         print("="*36)
         print("\n\n"+responses[0].format(len(word))+": "+("_ "*len(word)))
-
-
-# ---------- Challenge Functions (Optional) ----------
 
 def add_score():
     global cScore
@@ -300,7 +276,6 @@ def continueGameFunc():
         gameLoop()
 
     elif continueGame == "n":
-        # reset guesses, cScore, cPlayer, after setting the cplayer save_score
         print("Here are the final score list!")
         leaderboard = sorted(leaderboard, key=lambda x: -x[1])
         print(tabulate(leaderboard, headers=["Name", "Score"], tablefmt='fancy_grid'))
@@ -311,25 +286,12 @@ def continueGameFunc():
         print("Invalid input! Please Try again...")
         continueGameFunc()
 
-# When you've completed your hangman function, scroll down to the bottom
-# of the file and uncomment the last lines to test
-# (hint: you might want to pick your own
-# word while you're doing your own testing)
-
-
-# -----------------------------------
-
 def main():
-    # Uncomment the line below once you have finished testing.
     global guesses, word
     guesses = 6
-    # word = choose_random_word(wordlist)
-    # word = "age"
     hangman()
     gameLoop()
     
-
-
 # Driver function for the program
 if __name__ == "__main__":
     main()
