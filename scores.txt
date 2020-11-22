@@ -1,0 +1,2 @@
+Prithvi=14
+Vishnu=12
